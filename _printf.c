@@ -2,13 +2,26 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "main.h"
-
+/**
+ * _putchar - return the argument character
+ *
+ * @c: input character
+ */
 
 int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
 
+/**
+ * _printf - print the string given
+ * @i: i is an integer
+ * @j: j is an integer
+ * @k: k is an integer
+ * @*dest: pointer
+ * @*s: pointer
+ * Return: Always 0 (success)
+ */
 
 int _printf(const char *format, ...)
 {
@@ -61,5 +74,5 @@ int _printf(const char *format, ...)
 	write(1, dest, j++);
 	va_end(ap);
 	free(dest);
-	return (i);
+	return (j);
 }
