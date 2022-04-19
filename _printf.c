@@ -2,10 +2,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "main.h"
+#include <stdio.h>
+
 /**
  * _putchar - return the argument character
- *
  * @c: input character
+ * Return: char
  */
 
 int _putchar(char c)
@@ -15,22 +17,21 @@ int _putchar(char c)
 
 /**
  * _printf - print the string given
+ * @format: string to be printed
  * @i: i is an integer
  * @j: j is an integer
  * @k: k is an integer
- * @*dest: pointer
- * @*s: pointer
+ * @dest: pointer
+ * @s: pointer
  * Return: Always 0 (success)
  */
 
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int i = 0, j = 0;
+	int i = 0, j = 0, k = 0;
 	char *dest;
 	char *s;
-	int k;
-
 
 	dest = malloc(sizeof(char) * 1500);
 
@@ -51,7 +52,7 @@ int _printf(const char *format, ...)
 				dest[j] = format[i];
 				j++;
 			}
-			else if(format[i] == 's')
+			else if (format[i] == 's')
 			{
 				s = va_arg(ap, char*);
 				k = 0;
@@ -61,7 +62,6 @@ int _printf(const char *format, ...)
 					j++;
 					k++;
 				}
-				j++;
 			}
 		}
 		else
@@ -74,5 +74,5 @@ int _printf(const char *format, ...)
 	write(1, dest, j++);
 	va_end(ap);
 	free(dest);
-	return (j);
+	return (--j);
 }
