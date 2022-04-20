@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "main.h"
-#include <stdio.h>
 
 /**
  * _putchar - return the argument character
@@ -36,6 +35,10 @@ int _printf(const char *format, ...)
 	dest = malloc(sizeof(char) * 1500);
 
 	va_start(ap, format);
+
+	if (format == NULL)
+		return (j);
+
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
@@ -55,6 +58,10 @@ int _printf(const char *format, ...)
 			else if (format[i] == 's')
 			{
 				s = va_arg(ap, char*);
+				if (s  == NULL)
+				{
+					s = "(null)";
+				}
 				k = 0;
 				while (s[k])
 				{
@@ -63,6 +70,8 @@ int _printf(const char *format, ...)
 					k++;
 				}
 			}
+			else if (format[i] == '\0')
+				return (-1);
 		}
 		else
 		{
